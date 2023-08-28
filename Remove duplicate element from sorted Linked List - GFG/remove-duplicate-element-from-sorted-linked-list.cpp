@@ -70,7 +70,7 @@ Node *removeDuplicates(Node *head)
 {
         // Node*temp=head;
         Node*curr=head;
-        if(curr==NULL)return head;
+        // if(curr==NULL)return head;
         while(curr->next!=NULL){
             if(curr->data==curr->next->data ){
                 curr->next=curr->next->next;
