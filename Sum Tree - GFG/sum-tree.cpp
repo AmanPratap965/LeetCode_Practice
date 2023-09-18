@@ -109,10 +109,10 @@ class Solution
         pair<bool,int>ans;
         if(left.second+right.second==root->data && left.first==true && right.first==true){
             ans.first=true; 
-            ans.second=2*(root->data);
+           
         }
         else left.first=false;
-        
+         ans.second=2*(root->data);
        
         return ans;
     }
