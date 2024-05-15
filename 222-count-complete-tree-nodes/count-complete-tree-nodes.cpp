@@ -13,21 +13,13 @@ class Solution {
 public:
     int left(TreeNode*root){
         if(root==NULL)return 0;
-        int cnt=0;
-        while(root){
-            cnt++;
-            root=root->left;
-        }
-        return cnt;
+        
+        return left(root->left)+1;
     }
     int right(TreeNode*root){
         if(root==NULL)return 0;
-        int cnt=0;
-        while(root){
-            cnt++;
-            root=root->right;
-        }
-        return cnt;
+        
+        return right(root->right)+1;
     }
     int countNodes(TreeNode* root) {
         if(root==NULL)return 0;
