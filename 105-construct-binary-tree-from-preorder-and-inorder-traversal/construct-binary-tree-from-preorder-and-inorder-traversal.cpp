@@ -11,36 +11,25 @@
  */
 class Solution {
 public:
-int findPosition( vector<int>& in,int inorderStart,int inorderEnd,int element){
-        for(int i=inorderStart;i<=inorderEnd;i++){
-            if(element==in[i]){
-                return i;
-            }
+    int findElement(vector<int>&inorder,int element){
+        for(int i=0;i<inorder.size();i++){
+            if(inorder[i]==element)return i;
         }
         return -1;
     }
-    TreeNode*solve( vector<int>& in, vector<int>& pre,int &index,int inorderStart,int inorderEnd,int n, map<int,int>&mp){
-        //base case
-        if(index>=n || inorderStart>inorderEnd){
-            return NULL;
-        }
-        
-        int element=pre[index++];
-     
+    TreeNode*solve(vector<int>&inorder,vector<int>&preorder,int &index,int inStart,int inEnd,int n){
+        if(index>=n || inStart>inEnd)return NULL;
+        int element=preorder[index++];
         TreeNode*root=new TreeNode(element);
-        int position=findPosition(in,inorderStart,inorderEnd,element);
-        root->left=solve(in,pre,index,inorderStart,position-1,n,mp);
-        root->right=solve(in,pre,index,position+1,inorderEnd,n, mp);
+        int pos=findElement(inorder,element);
+        root->left=solve(inorder,preorder,index,inStart,pos-1,n);
+        root->right=solve(inorder,preorder,index,pos+1,inEnd,n);
         return root;
     }
-    TreeNode* buildTree(vector<int>& pre, vector<int>& in) {
-         int preOrderIndex=0;
-        map<int,int>mp;
-        int n=pre.size();
-        for(int i=0;i<n;i++){
-            mp[in[i]]=i;
-        }
-       TreeNode*ans= solve(in,pre,preOrderIndex,0,n-1,n,mp);
-       return ans;
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        int preorderIndex=0;
+        int n=inorder.size();
+        TreeNode*ans=solve(inorder,preorder,preorderIndex,0,n-1,n);
+        return ans;
     }
 };
