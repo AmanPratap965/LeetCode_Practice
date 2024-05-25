@@ -10,7 +10,6 @@ public:
                 ans=mid;
                 r=mid-1;
             }else if(nums[mid]<target){
-               
                 l=mid+1;
             }else{
                 r=mid-1;
@@ -39,6 +38,7 @@ public:
         // vector<int>ans(2)={-1,-1};
         int n=nums.size();
         int lower=lb(nums,target);
+        if(lower==-1)return {-1,-1};
         int upper=ub(nums,target);
         return {lower,upper};
     }
