@@ -1,7 +1,7 @@
 class Solution {
 public:
     int solve(vector<int>&arr,int k,int mid){
-	int cnt=0;long long int total=0;
+	int cnt=0;int total=0;
 	for(int i=0;i<arr.size();i++){
         if(arr[i]<=mid)cnt++;
         else {
