@@ -4,7 +4,7 @@ public:
         int ans=0;
         int sum=0;
         for(auto it:weights){
-            if(it>maxSum)return -1;
+            // if(it>maxSum)return -1;
                 if(sum+it<=maxSum)sum+=it;
                 else{
                     ans++;
@@ -17,7 +17,10 @@ public:
     int shipWithinDays(vector<int>& weights, int days) {
         int l=1;
         int r=0;
-        for(int i=0;i<weights.size();i++)r+=weights[i];
+        for(int i=0;i<weights.size();i++){
+            r+=weights[i];
+            l=max(l,weights[i]);
+        }
         int ans=0;
         while(l<=r){
                 int mid=l+(r-l)/2;
