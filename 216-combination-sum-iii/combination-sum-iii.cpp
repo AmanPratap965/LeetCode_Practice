@@ -10,10 +10,11 @@ public:
             return;
         }
         //pick 
+        if(ind<=target){
         temp.push_back(ind);
         solve(ind+1,temp,ans,target-ind,k);
         temp.pop_back();
-
+        }
         solve(ind+1,temp,ans,target,k);
     }
     vector<vector<int>> combinationSum3(int k, int n) {
