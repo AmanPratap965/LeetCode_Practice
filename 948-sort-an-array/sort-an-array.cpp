@@ -15,13 +15,14 @@ public:
         return j;
     }
     void qs(vector<int>&arr,int l,int h){
+        if(l>=h)return;
         //sorting it only when the array has more then one element 
-        if(l<h){
+        
             swap(arr[l+rand()%(h-l+1)],arr[l]);
             int pIndex=partition(arr,l,h);
             qs(arr,l,pIndex-1);
             qs(arr,pIndex+1,h);
-        }
+        
 
     }
     vector<int> sortArray(vector<int>& nums) {
