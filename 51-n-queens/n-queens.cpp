@@ -5,23 +5,9 @@ public:
         //checking up
         int r=row;
         int c=col;
-        while(r>=0){
-            if(board[r--][c]=='Q')return false;
-        }
-        r=row;c=col;
-        //checking down
-        while(r<n){
-           if(board[r++][c]=='Q')return false;
-        }
-        r=row;c=col;
         //checking left
         while(c>=0){
             if(board[r][c--]=='Q')return false;
-        }
-        c=col;r=row;
-        //checking right
-        while(c<n){
-            if(board[r][c++]=='Q')return false;
         }
         c=col;r=row;
         //checking up-left
@@ -29,21 +15,11 @@ public:
             if(board[r--][c--]=='Q')return false;
         }
             c=col;r=row;
-        //checking up-right
-        while(r>=0 && c<n){
-            if(board[r--][c++]=='Q')return false;
-        }
-        c=col;r=row;
+        
         //checking bottom-left
         while(r<n && c>=0){
             if(board[r++][c--]=='Q')return false;
         }
-        c=col;r=row;
-        //checking bottom-right
-        while(r<n && c<n){
-            if(board[r++][c++]=='Q')return false;
-        }
-
         return true;
     }
     void solve(int col,vector<string>board,vector<vector<string>>&ans,int n){
