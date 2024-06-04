@@ -17,17 +17,16 @@ public:
 
             for(int i=0;i<n;i++){
                 for(int j=0;j<m;j++){
+
+                    if(mat[i][j]==1){dp[i][j]=0;continue;}
                     if(i==0 && j==0){
-                        if(mat[i][j]==0)
                         dp[0][0]=1;
-                        else dp[0][0]=0;
                         continue;
                     }
                     int up=0,left=0;
                     if(i>0)up=dp[i-1][j];
                     if(j>0)left=dp[i][j-1];
-                    if(i>=0 && j>=0 && mat[i][j]==1)dp[i][j]=0;
-                    else dp[i][j]=(up+left)%mod;
+                    dp[i][j]=(up+left)%mod;
                 }
             }
         return dp[row][col];
