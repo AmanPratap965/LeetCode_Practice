@@ -17,19 +17,22 @@ public:
         int n=prices.size();
         vector<vector<int>>dp(prices.size()+1,vector<int>(2,0));
         // return fn(0,1,fee,prices,prices.size(),dp);
+        vector<int>after(2,0);
+        vector<int>curr(2,0);
         for(int ind=n-1;ind>=0;ind--){
             for(int buy=0;buy<=1;buy++){
                      if(buy){
-                        int take=-prices[ind]-fee+dp[ind+1][0];
-                        int notTake=0+dp[ind+1][1];
-                         dp[ind][buy]=max(take,notTake);
+                        int take=-prices[ind]-fee+after[0];
+                        int notTake=0+after[1];
+                         curr[buy]=max(take,notTake);
                     }else{
-                        int take=prices[ind]+dp[ind+1][1];
-                        int notTake=dp[ind+1][0];
-                         dp[ind][buy]=max(take,notTake);
+                        int take=prices[ind]+after[1];
+                        int notTake=after[0];
+                         curr[buy]=max(take,notTake);
                     }
             }
+            after = curr;
         }
-        return dp[0][1];
+        return after[1];
     }
 };
