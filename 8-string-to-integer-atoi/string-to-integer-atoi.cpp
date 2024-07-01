@@ -1,34 +1,30 @@
-#include<string>
 class Solution {
 public:
+    int mod=1e9+7;
     int myAtoi(string s) {
-        int n=s.size();
-        int i=0;
-        int flag=true;
         long ans=0;
-        while(s[i]==' ')i++;
-        if(s[i]=='-'){
-            flag=false;
-            i++;
+        int n=s.size();
+        int flag=1;
+        int j=0;
+        while(s[j]==' '){
+            j++;
         }
-        else if(s[i]=='+'){
-            flag=true;i++;
+        if(s[j]=='+')j++;
+        else if(s[j]=='-'){
+            flag=-1;
+            j++;
         }
-        while(i<n){
-            
-             if(s[i]<='9' && s[i]>='0'){
-                    ans=ans*10+(s[i]-'0');
-                    
-                        if(flag && ans>INT_MAX)return INT_MAX;
-                        else if(!flag && ans>INT_MAX) return INT_MIN;
-                    
-                    i++;
-            }else{
-                i++;
-                break;
-            }
+        for(int i=j;i<n;i++){
+                 if(s[i]>='0' && s[i]<='9'){
+                    ans=(ans*10)+(s[i]-'0');
+                    if(flag==1 && ans>INT_MAX)return INT_MAX;
+                    if(flag==-1 && ans>INT_MAX)return INT_MIN;
+
+                 }
+                else{
+                    break;
+                }
         }
-        if(flag==false)return -1*ans;
-        return ans;
+        return ans*flag;
     }
 };
