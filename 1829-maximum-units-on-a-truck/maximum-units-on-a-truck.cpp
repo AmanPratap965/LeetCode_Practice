@@ -7,7 +7,7 @@ public:
         sort(boxTypes.begin(),boxTypes.end(),cmp);
         int totalUnits=0;
         int cnt=0;int i=0;
-        while(truckSize>0 && i<boxTypes.size()){
+        while(i<boxTypes.size()){
             //if truckSize is greater than boxTypes[i][0]
             if(truckSize>=boxTypes[i][0]){
                 totalUnits+=(boxTypes[i][0])*boxTypes[i][1];
